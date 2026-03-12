@@ -37,6 +37,17 @@ public class Student {
 	
 	
 //3.setters
+	public void setMatriculaNumber(String inputMatriculaNumber) {
+		if( (inputMatriculaNumber !=null) && (!inputMatriculaNumber.isEmpty())
+				&& ((inputMatriculaNumber.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?")))) {
+		
+	matriculNumber = inputMatriculaNumber;
+	}
+	else {
+	matriculNumber = "Uknown";
+	}
+	}
+	
 public void setName(String inputName ) {
 	if( ( inputName != null ) && (!inputName.isEmpty())
 			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?"))) {
@@ -107,20 +118,39 @@ public void setPassportNumber(String inputPassportNumber) {
 	}
 
 //4 no-arg constructor
-
-public Student(){
-    setName("Unknown");
-    setSurname("Unknown");
-    setFculty("Unknown");
-    setBirthtYear(2000);
-    setCountry(Country.unknown);
-    setPassportNumber("Unknown");
+public Student () {
+	setMatriculaNumber ("1dq341");
+	setName("Aref");
+	setSurname("Hosseini");
+	setFculty("ITF");
+	setBirthtYear(2006);
+	setCountry(Country.Latvia);
+	setPassportNumber("SP092345");
+	
 }
 
 
-
 //5. arg-constructer
+public Student (String inputMatriclNumber, String inputName, String inputSurname, 
+		String inputFaculty, int inputBirthYear, 
+		Country inputCountry, String inputPassportNumber) {
+	setMatriculaNumber(inputMatriclNumber);
+	setName(inputName);
+	setSurname(inputSurname);
+	setFculty(inputFaculty);
+	setBirthtYear(inputBirthYear);
+	setCountry(inputCountry);
+	setPassportNumber(inputPassportNumber);
+}
 //6. toString
+
+public String toString() {
+	String result = name + "" + surname 
+			+ " (" + matriculNumber + " )" + faculty + ", " 
+			+ birthYear + " [" + country + "]" + passportNumber;
+	return result;
+}
+
 //7. other function
 
 }
