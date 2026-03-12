@@ -39,18 +39,18 @@ public class Student {
 //3.setters
 	public void setMatriculaNumber(String inputMatriculaNumber) {
 		if( (inputMatriculaNumber !=null) && (!inputMatriculaNumber.isEmpty())
-				&& ((inputMatriculaNumber.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?")))) {
+				&& ((inputMatriculaNumber.matches("[A-Z]{2}[0-9]{6}")))) {
 		
 	matriculNumber = inputMatriculaNumber;
 	}
 	else {
 	matriculNumber = "Uknown";
 	}
-	}
+}
 	
 public void setName(String inputName ) {
 	if( ( inputName != null ) && (!inputName.isEmpty())
-			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?"))) {
+			&& (inputName.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
 		
 	name = inputName;
 	}
@@ -62,7 +62,7 @@ public void setName(String inputName ) {
 
 public void setSurname(String inputSurname ) {
 	if( ( inputSurname != null ) && (!inputSurname.isEmpty())
-			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?"))) {
+			&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))) {
 		
 	surname = inputSurname;
 	}
@@ -72,7 +72,7 @@ public void setSurname(String inputSurname ) {
 }
 public void setFculty(String inputFaculty) {
 	if( ( inputFaculty != null ) && (!inputFaculty.isEmpty())
-			&& (inputFaculty.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?"))) {
+			&& (inputFaculty.matches("[A-Za-z ]{3,100}"))) {
 		
 	faculty = inputFaculty;
 	}
@@ -108,7 +108,7 @@ public void setCountry(Country inputCountry) {
 
 public void setPassportNumber(String inputPassportNumber) {
 	if( ( inputPassportNumber != null ) && (!inputPassportNumber.isEmpty())
-			&& (inputPassportNumber.matches("[A-Z]{1}[a-z]{2,15}([]{1}[A-Z]{1}[a-z]{2,15}))?"))) {
+			&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}"))) {
 		
 		passportNumber = inputPassportNumber;
 	}
@@ -119,7 +119,7 @@ public void setPassportNumber(String inputPassportNumber) {
 
 //4 no-arg constructor
 public Student () {
-	setMatriculaNumber ("1dq341");
+	setMatriculaNumber ("AS876453");
 	setName("Aref");
 	setSurname("Hosseini");
 	setFculty("ITF");
@@ -145,7 +145,7 @@ public Student (String inputMatriclNumber, String inputName, String inputSurname
 //6. toString
 
 public String toString() {
-	String result = name + "" + surname 
+	String result = name + " " + surname 
 			+ " (" + matriculNumber + " )" + faculty + ", " 
 			+ birthYear + " [" + country + "]" + passportNumber;
 	return result;
