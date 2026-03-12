@@ -77,9 +77,9 @@ public class Professor {
 	
 	public Professor () {
 		setId ();
-		setName("");
-		setSurname("");
-		setProfessorDegree(degree.uknown);
+		setName("Oliver");
+		setSurname("Ridll");
+		setProfessorDegree(ProfessorDegree.bachelor);
 	}
 	
 	//5. arg-constructer
