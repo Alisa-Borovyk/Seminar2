@@ -105,18 +105,55 @@ Grade gr2 = new Grade(50, stud3, cour2);
 
 				
 				System.out.println(allGrades);
-		
+				
+				System.out.println("------Professor with master degree------");
+fillterAllProfessorsWithDegree(ProfessorDegree.master);
+				System.out.println("------Professor with PHD degree------");
+fillterAllProfessorsWithDegree(ProfessorDegree.phd);
+
+
+
 }
 
-	public static void fillterAllProfessorsWithMasterDegree() {
+	public static void fillterAllProfessorsWithDegree(ProfessorDegree degree) {
 		
 		for(Professor tempS : allProfessors) {
-			if(tempS.getProfessorDegree().equals(ProfessorDegree.master)) {
+			if(tempS.getProfessorDegree().equals(degree)) {
 				System.out.println(tempS);
 				
 			}
 		}
+	}
 		
+		public static void fillterAllStudentsWithFaculty(String faculty) {
+			
+			for(Student tempS : allStudents) {
+				if(tempS.getFaculty().equals(faculty)) {
+					System.out.println(tempS);
+				}
+				
+			}
+		}
+			public static void fillterAllCourse(String course) {
+				
+				for(Course tempS : allCourses) {
+					if(tempS.getCourse().equals(course)) {
+						System.out.println(tempS);
+					}
+					
+				}
+				
+				public static void fillterAllGrades(String value) {
+					
+					for(String tempS : allGrades) {
+						if(tempS.getValue().equals(value)) {
+							System.out.println(tempS);
+							
+						}
+						
+					}
+				
+			
 	}
 	
 	
