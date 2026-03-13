@@ -1,7 +1,7 @@
 package modle;
 
 public class Course {
-	
+	//1. variables
 	private long id;
 	private String title;
 	private int creditPoints;
@@ -10,7 +10,7 @@ public class Course {
 	private static long counter = 0;
 
 	
-	///////////////////////////////////////////
+	//2/ getters
 	
 	public long getId() {
 		return id;
@@ -25,8 +25,7 @@ public class Course {
 		return professor;
 	}
 	
-	
-	////////////////////////////////////////////////
+	//3.setters
 	
 	public void setId() {
 		id= counter;
@@ -46,7 +45,7 @@ public class Course {
 		
 		public void setCreditPoints(int inputCreditPoints) {
 			
-			if((inputCreditPoints >= 3) && (inputCreditPoints <= 6)) {
+			if((inputCreditPoints >= 1) && (inputCreditPoints <= 10)) {
 				
 				creditPoints = inputCreditPoints; 
 			}
@@ -54,7 +53,7 @@ public class Course {
 			else {
 				
 			}
-			creditPoints = 3;
+			creditPoints = 1;
 		}
 
 		
@@ -67,10 +66,8 @@ public class Course {
 		    }
 		}
 		
-		
-		///////////////////////////////////////
-		
-		
+
+		//4 no-arg constructor
 		public Course() {
 			
 			setId();
@@ -80,8 +77,8 @@ public class Course {
 			
 		}
 		
-		//////////////////////////////////
-	
+
+		//5. arg-constructer
 	public Course (long inputId, String inputTitle, int inputCreditPoints, Professor inputProfessor) {
 		setId();
 		setTitle(inputTitle);
@@ -89,15 +86,15 @@ public class Course {
 		setProfessor(inputProfessor);
 	}
 		
-		///////////////////////////////////
-		/// 
-		/// public String toString() {
-	String result = id + title + creditPoints + professor;
-			;
+	//6. toString
+
+	public String toString() {
+	String result = id + " " + title + " " + creditPoints + " " + professor;
+			
 	return result;
-}
+		}
 
 		
 
-		}
+}
 	
