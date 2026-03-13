@@ -71,9 +71,9 @@ public class Course {
 		public Course() {
 			
 			setId();
-			setTitle("");
+			setTitle("JAVA");
 			setCreditPoints(3);
-			setProfessor(professor);
+			setProfessor(new Professor());
 			
 		}
 		

@@ -2,6 +2,7 @@ package Service;
 
 import modle.Country;
 import modle.Course;
+import modle.Grade;
 import modle.Professor;
 import modle.ProfessorDegree;
 import modle.Student;
@@ -42,12 +43,19 @@ Professor proff2 = new Professor ( "Elliot", "Kelner", ProfessorDegree.master);
 		System.out.println("--------------------------------");
 		
 Course cour1 = new Course();
-		System.out.println("cour1");
+		System.out.println(cour1);
 		
 Course cour2 = new Course( 12346, "Data Structure", 6, proff2);
-System.out.println("cour2");
-		
-		
+System.out.println(cour2);
+
+
+System.out.println("--------------------------------");
+
+Grade gr1 = new Grade();
+System.out.println(gr1);
+
+Grade gr2 = new Grade(50, stud3, cour2);
+
 		
 }
 	
