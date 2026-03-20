@@ -31,7 +31,7 @@ public class MainService {
 	
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		
 		
@@ -154,7 +154,7 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				System.out.println("----------Crud for Professor-----------");
 				
 				try {
-					createNewProcessor("Karlis", "Immers", ProfessorDegree.master, "ER123456");
+					createNewProfessor("Karlis", "Immers", ProfessorDegree.master, "ER123456");
 					System.out.println(allProfessors);
 					
 					System.out.println(getProfessorById(2));
@@ -166,7 +166,11 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				}
 
 				
+				UpdateProfessorById(2, "Mia", "Merly", ProfessorDegree.bachelor);
+				System.out.println(allProfessors);
 				
+				DeleteProfessorById(1);
+				System.out.println(allProfessors);
 				
 				
 	}
@@ -266,7 +270,9 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 		}
 				
-				public static void createNewProcessor (String inputName, String inputSurname, ProfessorDegree inputDegree,String inputPassportNumber)throws Exception {
+				//c
+				
+				public static void createNewProfessor (String inputName, String inputSurname, ProfessorDegree inputDegree,String inputPassportNumber)throws Exception {
 					for(Professor tempP : allProfessors) {
 						if(tempP.getPassportNumber().equals(inputPassportNumber)) {
 							Exception myEx =
@@ -280,7 +286,7 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				}
 				
 				
-				
+				//r
 				public static Professor getProfessorById(long inputId)  throws Exception{
 					
 					if(inputId < 0) {
@@ -298,8 +304,24 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				}
 				
 				
+				//u
+				
+				public static void UpdateProfessorById(long inpuId, String inputName, 
+						String inputSurname, ProfessorDegree inputDegree) throws Exception {
+					
+					Professor profForUpdate = getProfessorById(inpuId);
+					
+					profForUpdate.setName(inputName);
+					profForUpdate.setSurname(inputSurname);
+					profForUpdate.setProfessorDegree(inputDegree);
+					
+				}
 				
 				
+				public static void DeleteProfessorById(long inpuId) throws Exception {
+					Professor profForDeleting = getProfessorById(inpuId);
+					allProfessors.remove(profForDeleting);
+				}
 				
 				
 				
