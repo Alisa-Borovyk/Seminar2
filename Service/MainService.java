@@ -10,7 +10,7 @@ import modle.Grade;
 import modle.Professor;
 import modle.ProfessorDegree;
 import modle.Student;
-import sun.jvm.hotspot.runtime.StaticBaseConstructor;
+
 
 public class MainService {
 	
@@ -100,7 +100,7 @@ Course cour3 = new Course( 12378, "Managment", 8, proff3);
 
 Grade gr1 = new Grade();
 
-Grade gr2 = new Grade(50, stud3, cour2);
+Grade gr2 = new Grade(2, stud3, cour2);
 				
 				allGrades.add(gr1);
 				allGrades.add(gr2);
@@ -131,8 +131,26 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 				System.out.println("--------Coursess for estere----------");
 
-				ArrayList<Course> result3 = filterCourseByProfessorID(0);
-				System.out.println(result3);
+				ArrayList<Course> result3;
+				try {
+					result3 = filterCourseByProfessorID(1);
+					System.out.println(result3);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+
+			}
+				
+				ArrayList<Grade> result4;
+				try {
+					result4 = FilterFailledGrades();
+					System.out.println(result4);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
+				
 	}
 
 	public static void fillterAllProfessorsWithDegree(ProfessorDegree degree) {
@@ -204,39 +222,30 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 				else {
 				return filteredCourse;
+				}
 			
 		}
 				
-				/*
-			public static void r(String course) {
 				
-				for(Course tempS : allCourses) {
-					if(tempS.getCourse().equals(course)) {
-						System.out.println(tempS);
-					}
-					
-				}
-				
-				public static void fillterAllGrades(String value) {
-					
-					for(String tempS : allGrades) {
-						if(tempS.getValue().equals(value)) {
-							System.out.println(tempS);
+				public  static ArrayList<Grade> FilterFailledGrades() throws Exception {
+					ArrayList<Grade> filterGrades = new ArrayList<Grade>();
+					for(Grade tempG : allGrades) {
+						if(tempG.getValue() < 4) {
+							filterGrades.add(tempG);
 							
 						}
-						
 					}
-				*/
+					if(filterGrades.isEmpty()) {
+						Exception myExc = new Exception
+								("There is no Failed Grades");
+						throw myExc;
+						}
+					
+					else {
+					return filterGrades;
+				}
+				
+				
+	
 			
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-
-}
+			}}
