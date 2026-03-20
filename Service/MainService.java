@@ -112,10 +112,24 @@ fillterAllProfessorsWithDegree(ProfessorDegree.master);
 fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 
 				System.out.println("--------Student older than 2007----------");
-FilterAllStudentWithBirthYearLargerThan(2007);
+	
+				try {
+					ArrayList<Student> result = FilterAllStudentWithBirthYearLargerThan(2007);
+					System.out.println(result);
+					
+					System.out.println("--------Student Faculty----------");
+					
+					
+					fillterAllStudentsWithFacultyITF("ITF");
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 
-
-}
+				
+	}
 
 	public static void fillterAllProfessorsWithDegree(ProfessorDegree degree) {
 		
@@ -127,26 +141,47 @@ FilterAllStudentWithBirthYearLargerThan(2007);
 		}
 	}
 	
-	public static void FilterAllStudentWithBirthYearLargerThan (int inputBirthyearThreshold)
+	public static ArrayList<Student> FilterAllStudentWithBirthYearLargerThan (int inputBirthyearThreshold) throws Exception
 	{
+		ArrayList<Student> filteredStudents = new ArrayList<Student> ();
 		for (Student tempS : allStudents) {
 			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
-				System.out.println(tempS);
+				filteredStudents.add(tempS);
+				//System.out.println(tempS);
 			}
 		}
-	}
-	
-	
+		if(filteredStudents.isEmpty()) {
+			Exception myExc = new Exception
+					("There is no student wich birth yeasr is larger than "+" inputBirthyearThreshold");
+			throw myExc;
+			}
 		
-		public static void fillterAllStudentsWithFaculty(String faculty) {
+		else {
+			return filteredStudents;
+		}
+		
+		}
+		
+		
+		
+		public static void fillterAllStudentsWithFacultyITF(String inputFaculty) throws Exception {
+			
+			boolean isThereResult = false;
+			
 			
 			for(Student tempS : allStudents) {
-				if(tempS.getFaculty().equals(faculty)) {
+				if(tempS.getFaculty().equals(inputFaculty)) {
 					System.out.println(tempS);
+					isThereResult = true;
 				}
-				
 			}
-		}
+			
+			if(!isThereResult) {//is it false
+				throw new Exception("T no stud wich faculty is "+" inputFaculty");
+			}
+			
+			
+		}/*
 			public static void r(String course) {
 				
 				for(Course tempS : allCourses) {
@@ -165,13 +200,13 @@ FilterAllStudentWithBirthYearLargerThan(2007);
 						}
 						
 					}
-				
+				*/
 			
-	}
 	
 	
 	
 	
+
 	
 	
 	
