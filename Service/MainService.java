@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 import modle.Country;
 import modle.Course;
 import modle.Grade;
@@ -155,6 +156,9 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				try {
 					createNewProcessor("Karlis", "Immers", ProfessorDegree.master, "ER123456");
 					System.out.println(allProfessors);
+					
+					System.out.println(getProfessorById(2));
+					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -277,7 +281,21 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 				
 				
-				
+				public static Professor getProfessorById(long inputId)  throws Exception{
+					
+					if(inputId < 0) {
+						Exception myEx = new Exception ("Id should be 0 or positive");
+						throw myEx;
+					}
+					
+					for (Professor tempP : allProfessors) {
+						if(tempP.getId() == inputId) {
+							return tempP;
+						}
+					}
+					Exception myEx = new Exception("No such prof with Id" + inputId);
+					throw myEx;
+				}
 				
 				
 				
