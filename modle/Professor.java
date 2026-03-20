@@ -7,6 +7,7 @@ public class Professor {
 	private String name;
 	private String surname;
 	private ProfessorDegree degree;
+	private String passportNumber;
 	
 	
 	
@@ -29,6 +30,9 @@ public class Professor {
 		
 	public ProfessorDegree getProfessorDegree() {
 				return degree;
+	}
+	public String getPassportNumber() {
+		return passportNumber;
 	}
 			
 	
@@ -71,6 +75,17 @@ public class Professor {
 	    }
 	}
 	
+	public void setPassportNumber(String inputPassportNumber) {
+		if( ( inputPassportNumber != null ) && (!inputPassportNumber.isEmpty())
+				&& (inputPassportNumber.matches("[A-Z]{2}[0-9]{6}"))) {
+			
+			passportNumber = inputPassportNumber;
+		}
+		else {
+			passportNumber = "Uknown";
+			}
+		}
+	
 	
 	
 	//4 no-arg constructor
@@ -80,24 +95,25 @@ public class Professor {
 		setName("Oliver");
 		setSurname("Ridll");
 		setProfessorDegree(ProfessorDegree.bachelor);
+		setPassportNumber("AT12456");
 	}
 	
 	//5. arg-constructer
 	
-	public Professor(String inputName, String inputSurname, ProfessorDegree inputDegree) {
+	public Professor(String inputName, String inputSurname, ProfessorDegree inputDegree,String inputPassportNumber) {
 		
 		setId();
 		setName(inputName);
 		setSurname(inputSurname);
 		setProfessorDegree(inputDegree);
-		
+		setPassportNumber(inputPassportNumber);
 	}
 	
 	//6. toString
 	
 	public String toString() {
 		String result = name + " " + surname 
-				+ " (" + id + " )" + degree;
+				+ " (" + id + " )" + "(" + degree + ")" + passportNumber;
 		
 		return result;
 	

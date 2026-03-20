@@ -66,9 +66,9 @@ Student stud4 = new Student("JK784538", "Nickolas", "Fletcher", "OPS", 2004, Cou
 	
 Professor proff1 = new Professor ();
 		
-Professor proff2 = new Professor ( "Elliot", "Kelner", ProfessorDegree.master);
+Professor proff2 = new Professor ( "Elliot", "Kelner", ProfessorDegree.master, "JA654321");
 				
-Professor proff3 = new Professor ( "Adel", "Legran", ProfessorDegree.bachelor);
+Professor proff3 = new Professor ( "Adel", "Legran", ProfessorDegree.bachelor, "DA675839");
 				
 				
 				allProfessors.add(proff1);
@@ -246,6 +246,6 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				}
 				
 				
-	
-			
-			}}
+		}
+				
+}
