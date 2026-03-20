@@ -13,7 +13,7 @@ public class Grade {
 
 
 	
-	//2/ getters
+	//2 getters
 	
 	public long getG_ID() {
 		return g_ID;

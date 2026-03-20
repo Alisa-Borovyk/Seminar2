@@ -150,6 +150,20 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 					e.printStackTrace();
 				}
 		
+				System.out.println("----------Crud for Professor-----------");
+				
+				try {
+					createNewProcessor("Karlis", "Immers", ProfessorDegree.master, "ER123456");
+					System.out.println(allProfessors);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+				}
+
+				
+				
+				
 				
 	}
 
@@ -247,5 +261,29 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 				
 		}
+				
+				public static void createNewProcessor (String inputName, String inputSurname, ProfessorDegree inputDegree,String inputPassportNumber)throws Exception {
+					for(Professor tempP : allProfessors) {
+						if(tempP.getPassportNumber().equals(inputPassportNumber)) {
+							Exception myEx =
+									new Exception ("Professor already exists it the system");
+							throw myEx;
+						}
+					}
+					
+					Professor newProfessors = new Professor (inputName, inputSurname, inputDegree, inputPassportNumber);
+					allProfessors.add(newProfessors);
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 }
