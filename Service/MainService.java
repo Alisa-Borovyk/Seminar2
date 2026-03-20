@@ -111,6 +111,8 @@ fillterAllProfessorsWithDegree(ProfessorDegree.master);
 				System.out.println("------Professor with PHD degree------");
 fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 
+				System.out.println("--------Student older than 2007----------");
+FilterAllStudentWithBirthYearLargerThan(2007);
 
 
 }
@@ -124,6 +126,17 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 			}
 		}
 	}
+	
+	public static void FilterAllStudentWithBirthYearLargerThan (int inputBirthyearThreshold)
+	{
+		for (Student tempS : allStudents) {
+			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
+				System.out.println(tempS);
+			}
+		}
+	}
+	
+	
 		
 		public static void fillterAllStudentsWithFaculty(String faculty) {
 			
@@ -134,7 +147,7 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				
 			}
 		}
-			public static void fillterAllCourse(String course) {
+			public static void r(String course) {
 				
 				for(Course tempS : allCourses) {
 					if(tempS.getCourse().equals(course)) {
