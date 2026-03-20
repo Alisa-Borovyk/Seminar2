@@ -1,5 +1,6 @@
 package Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,6 +10,7 @@ import modle.Grade;
 import modle.Professor;
 import modle.ProfessorDegree;
 import modle.Student;
+import sun.jvm.hotspot.runtime.StaticBaseConstructor;
 
 public class MainService {
 	
@@ -127,8 +129,10 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 					e.printStackTrace();
 				}
 				
+				System.out.println("--------Coursess for estere----------");
 
-				
+				ArrayList<Course> result3 = filterCourseByProfessorID(0);
+				System.out.println(result3);
 	}
 
 	public static void fillterAllProfessorsWithDegree(ProfessorDegree degree) {
@@ -177,11 +181,33 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 			}
 			
 			if(!isThereResult) {//is it false
-				throw new Exception("T no stud wich faculty is "+" inputFaculty");
+				throw new Exception("T no stud wich faculty is "+" inputFaculty"); 
+			}
 			}
 			
 			
-		}/*
+			
+			public static ArrayList<Course> filterCourseByProfessorID(long inputId) throws Exception{
+				
+				ArrayList<Course> filteredCourse = new ArrayList<Course>();
+				
+				for(Course tempC : allCourses) {
+					if(tempC.getProfessor().getId()==inputId) {
+							filteredCourse.add(tempC);
+					}
+			}
+				if(filteredCourse.isEmpty()) {
+					Exception myExc = new Exception
+							("There is no course which "+" leading professor is with id" + inputId);
+					throw myExc;
+					}
+				
+				else {
+				return filteredCourse;
+			
+		}
+				
+				/*
 			public static void r(String course) {
 				
 				for(Course tempS : allCourses) {
