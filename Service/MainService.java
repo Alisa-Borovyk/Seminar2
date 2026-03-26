@@ -8,6 +8,7 @@ import java.util.Arrays;
 import modle.Country;
 import modle.Course;
 import modle.Grade;
+import modle.Person;
 import modle.Professor;
 import modle.ProfessorDegree;
 import modle.Student;
@@ -15,11 +16,9 @@ import modle.Student;
 
 public class MainService {
 	
-	private static ArrayList<Student> allStudents 
-												= new ArrayList<Student>();
-	
-	private static ArrayList<Professor> allProfessors
-												= new ArrayList<Professor>();
+	private static ArrayList<Person> allPerson 
+												= new ArrayList<Person>();
+
 	
 	private static ArrayList<Course> allCourses
 											= new ArrayList<Course>();
@@ -49,16 +48,34 @@ Student stud4 = new Student("JK784538", "Nickolas", "Fletcher", "OPS", 2004, Cou
 				
 				
 				
-				allStudents.add(stud1);
-				allStudents.add(stud2);
-				allStudents.add(stud3);
-				
-				
-				System.out.println(allStudents);
+	allPerson .add(stud1);
+	allPerson .add(stud2);
+	allPerson .add(stud3);
+	
+	
+	System.out.println("---------------All Person-----------------");
+	
+	System.out.println(allPerson );
+	
+	
+	System.out.println("---------------Student-----------------");
+	for (Person temP : allPerson) {
+		if (temP instanceof Student) {
+			System.out.println(temP);
+		}
+	}
 				System.out.println("----students from Latvia");
-				for (int i = 0; i<allStudents.size(); i++) {
-					if(allStudents.get(i).getCountry().equals(Country.Latvia)) {
-						System.out.println(allStudents.get(i));
+				
+				for(int i = 0; i < allPerson.size(); i++) {
+					if(allPerson.get(i) instanceof Student) {
+						Student tempStudent = (Student) allPerson.get(i);
+				
+				
+					if(tempStudent.getCountry().equals(Country.Latvia)) {
+						System.out.println(tempStudent);
+						
+						
+					}
 					}
 				}
 				
@@ -70,15 +87,21 @@ Professor proff1 = new Professor ();
 Professor proff2 = new Professor ( "Elliot", "Kelner", ProfessorDegree.master, "JA654321");
 				
 Professor proff3 = new Professor ( "Adel", "Legran", ProfessorDegree.bachelor, "DA675839");
+
+
+
 				
 				
-				allProfessors.add(proff1);
-				allProfessors.add(proff2);
-				allProfessors.add(proff3);
-				
-				System.out.println(allProfessors);
-		
-		
+		allPerson .add(proff1);
+		allPerson .add(proff2);
+		allPerson .add(proff3);
+
+		for (Person temP : allPerson) {
+			if (temP instanceof Professor) {
+				System.out.println(temP);
+
+			}
+		}
 
 				System.out.println("---------------Course-----------------");
 		
@@ -154,9 +177,15 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				System.out.println("----------Crud for Professor-----------");
 				
 				try {
+					System.out.println("---CREATE------");
 					createNewProfessor("Karlis", "Immers", ProfessorDegree.master, "ER123456");
-					System.out.println(allProfessors);
-					
+					for (Person temP : allPerson) {
+						if (temP instanceof Professor) {
+							System.out.println(temP);
+
+						}
+					}
+					System.out.println("---RETRIEVE BY ID------");
 					System.out.println(getProfessorById(2));
 					
 				} catch (Exception e) {
@@ -165,34 +194,63 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 					
 				}
 
-				
+				System.out.println("---UPDATE BY ID------");
 				UpdateProfessorById(2, "Mia", "Merly", ProfessorDegree.bachelor);
-				System.out.println(allProfessors);
-				
+				for (Person temP : allPerson) {
+					if (temP instanceof Professor) {
+						System.out.println(temP);
+
+					}
+				}
+				System.out.println("---DELETE BY ID------");
 				DeleteProfessorById(1);
-				System.out.println(allProfessors);
+				for (Person temP : allPerson) {
+					if (temP instanceof Professor) {
+						System.out.println(temP);
+
+					}
+				}
+			
 				
 				
 	}
 
 	public static void fillterAllProfessorsWithDegree(ProfessorDegree degree) {
 		
-		for(Professor tempS : allProfessors) {
-			if(tempS.getProfessorDegree().equals(degree)) {
-				System.out.println(tempS);
+		for(Person tempP : allPerson ) {
+			if(tempP instanceof Professor)
+			{
+				
+				Professor tempProfessor = (Professor)tempP;
+				if(tempProfessor.getProfessorDegree().equals(degree))
+				{
+					System.out.println(tempProfessor);
+}
+}
 				
 			}
+				
 		}
-	}
+	
 	
 	public static ArrayList<Student> FilterAllStudentWithBirthYearLargerThan (int inputBirthyearThreshold) throws Exception
 	{
+		
+	
+		
+	
 		ArrayList<Student> filteredStudents = new ArrayList<Student> ();
-		for (Student tempS : allStudents) {
-			if(tempS.getBirthYear() >= inputBirthyearThreshold) {
-				filteredStudents.add(tempS);
+		for (Person tempS : allPerson ) {
+			
+		if (tempS instanceof Student) {
+			Student tempStudent = (Student) tempS;
+		
+			
+			if(tempStudent.getBirthYear() >= inputBirthyearThreshold) {
+				filteredStudents.add(tempStudent);
 				//System.out.println(tempS);
 			}
+		}
 		}
 		if(filteredStudents.isEmpty()) {
 			Exception myExc = new Exception
@@ -213,16 +271,19 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 			boolean isThereResult = false;
 			
 			
-			for(Student tempS : allStudents) {
-				if(tempS.getFaculty().equals(inputFaculty)) {
-					System.out.println(tempS);
+			for(Person tempP : allPerson ) {
+				if (tempP instanceof Student) {
+					Student tempStudent = (Student) tempP;
+				
+				if(tempStudent.getFaculty().equals(inputFaculty)) {
+					System.out.println(tempStudent);
 					isThereResult = true;
 				}
 			}
 			
 			if(!isThereResult) {//is it false
 				throw new Exception("T no stud wich faculty is "+" inputFaculty"); 
-			}
+			}}
 			}
 			
 			
@@ -273,7 +334,12 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				//c
 				
 				public static void createNewProfessor (String inputName, String inputSurname, ProfessorDegree inputDegree,String inputPassportNumber)throws Exception {
-					for(Professor tempP : allProfessors) {
+					for(Person tempP : allPerson ) {
+						
+						//TODO If we want we can check
+						
+						
+						
 						if(tempP.getPassportNumber().equals(inputPassportNumber)) {
 							Exception myEx =
 									new Exception ("Professor already exists it the system");
@@ -282,22 +348,39 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 					}
 					
 					Professor newProfessors = new Professor (inputName, inputSurname, inputDegree, inputPassportNumber);
-					allProfessors.add(newProfessors);
+					allPerson .add(newProfessors);
 				}
 				
 				
 				//r
+				
+				/*for(Person tempP : allPerson ) {
+				if (tempP instanceof Student) {
+					Student tempStudent = (Student) tempP;
+				
+				if(tempStudent.getFaculty().equals(inputFaculty)) {
+					System.out.println(tempStudent);
+					isThereResult = true;
+					*/
+
+				
 				public static Professor getProfessorById(long inputId)  throws Exception{
 					
 					if(inputId < 0) {
-						Exception myEx = new Exception ("Id should be 0 or positive");
+						Exception myEx = new Exception ("It should be 0 or positive");
 						throw myEx;
 					}
 					
-					for (Professor tempP : allProfessors) {
-						if(tempP.getId() == inputId) {
-							return tempP;
+					for(Person tempP : allPerson ) {
+						if(tempP instanceof Professor)
+						{
+							Professor tempProfessor = (Professor)tempP;
+						
+						if(tempProfessor.getId() == inputId) {
+							
+							return tempProfessor;
 						}
+					}
 					}
 					Exception myEx = new Exception("No such prof with Id" + inputId);
 					throw myEx;
@@ -320,7 +403,7 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 				//d
 				public static void DeleteProfessorById(long inpuId) throws Exception {
 					Professor profForDeleting = getProfessorById(inpuId);
-					allProfessors.remove(profForDeleting);
+					allPerson .remove(profForDeleting);
 				}
 				
 				
