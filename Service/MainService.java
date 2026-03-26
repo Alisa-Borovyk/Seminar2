@@ -317,7 +317,7 @@ fillterAllProfessorsWithDegree(ProfessorDegree.phd);
 					
 				}
 				
-				
+				//d
 				public static void DeleteProfessorById(long inpuId) throws Exception {
 					Professor profForDeleting = getProfessorById(inpuId);
 					allProfessors.remove(profForDeleting);
