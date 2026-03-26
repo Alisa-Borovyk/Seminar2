@@ -2,9 +2,9 @@ package modle;
 
 public class Person {
 	//variables
-	private String name;
-	private String surname;
-	private String passportNumber;
+	protected String name;
+	protected String surname;
+	protected String passportNumber;
 
 
 
